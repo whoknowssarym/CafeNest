@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-Here’s a professional and fully detailed README template for your app, **CafeNest**:
-
----
-
-# CafeNest ☕️
-
-Welcome to **CafeNest**, a beautifully designed app for managing cafe orders, reservations, and customer experiences. Whether you're a cafe owner or a customer, CafeNest makes the whole process seamless and enjoyable!
-
-## 📱 Features
-
-- **Smooth Navigation**: Effortlessly switch between different sections using `react-navigation` and `react-native-stack`.
-- **Engaging UI Elements**: Aesthetic gradients, interactive icons, and beautiful animations enhance the user experience.
-- **State Management**: Efficient state handling with `zustand` and `immer`, ensuring smooth app performance.
-- **Persistent Storage**: All your data is securely stored with `async-storage`.
-
-## 🛠 Dependencies
-
-### Navigation
-
-=======
-
 # CafeNest ☕️
 
 Welcome to **CafeNest**, a beautifully designed app for managing cafe orders, reservations, and customer experiences. Whether you're a cafe owner or a customer, CafeNest makes the whole process seamless and enjoyable!
@@ -155,10 +133,3 @@ We welcome contributions! Here's how you can help:
 ## 📄 License
 
 CafeNest is open-source and available under the [MIT License](LICENSE).
-
-<<<<<<< HEAD
----
-
-Feel free to adjust and extend this README as your project grows! It provides a professional layout, lists all necessary dependencies, and outlines the steps for setup and contributions clearly.
-=======
->>>>>>> f4738411910d9519d4c4ee4251dca04803ce80b8
