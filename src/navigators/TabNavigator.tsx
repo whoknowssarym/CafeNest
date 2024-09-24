@@ -1,13 +1,14 @@
 import React from 'react'
 import { StyleSheet,Text,View} from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { COLORS } from '../theme/theme';
+import { BlurView } from '@react-native-community/blur';
 import HomeScreen from '../screens/HomeScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
 import CartScreen from '../screens/CartScreen';
 import OrderHistoryScreen from '../screens/OrderHistoryScreen';
 import Customicons from '../components/Customicons';
-import { COLORS } from '../theme/theme';
-import { BlurView } from '@react-native-community/blur';
+
 
 
 const Tab = createBottomTabNavigator();
