@@ -13,7 +13,6 @@ Welcome to **CafeNest**, a beautifully designed app for managing cafe orders, re
 
 ### Navigation
 
->>>>>>> f4738411910d9519d4c4ee4251dca04803ce80b8
 - **React Navigation**: Seamlessly manage your app's navigation flow.
   ```
   npm install @react-navigation/native
