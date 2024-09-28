@@ -131,4 +131,4 @@ We welcome contributions! Here's how you can help:
 
 ## 📄 License
 
-CafeNest is open-source and available under the [MIT License](LICENSE).
+CafeNest is Not available under any (LICENSE).
