@@ -34,7 +34,7 @@ const getCoffeList = (category :string , data :any) =>{
   }
 }
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation} : any) => {
   const CoffeeList = useStore((state:any) => state.CoffeeList);
   const BeanList = useStore((state:any) => state.BeanList);
   const[categories , setCategories] = useState(
@@ -157,7 +157,9 @@ const HomeScreen = () => {
          keyExtractor={item => item.id}
          renderItem={({item}) =>{
           return ( 
-           <TouchableOpacity onPress={() => {}}>
+           <TouchableOpacity onPress={() => {
+            navigation.push('Details')
+           }}>
              <CoffeCard 
              id={item.id}
              index={item.index}
@@ -184,7 +186,9 @@ const HomeScreen = () => {
          keyExtractor={item => item.id}
          renderItem={({item}) =>{
           return ( 
-           <TouchableOpacity onPress={() => {}}>
+           <TouchableOpacity onPress={() => {
+            navigation.push('Details')
+           }}>
              <CoffeCard 
              id={item.id}
              index={item.index}
@@ -280,6 +284,7 @@ const styles = StyleSheet.create({
   CoffeBeansTitle:{
     fontSize:FONTSIZE.size_18,
     marginLeft:SPACING.space_36,
+    paddingTop:SPACING.space_2,
     /*marginTop:SPACING.space_10, */
     fontFamily:FONTFAMILY.poppins_medium,
     color:COLORS.secondaryLightGreyHex,
@@ -289,6 +294,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     paddingVertical:SPACING.space_36*3.6,
+    
     
 
   }
