@@ -9,6 +9,7 @@ import CoffeCard from '../components/CoffeCard';
 import BeansData from '../data/BeansData';
 
 
+                    {/* Catagerios Function */}
 const getCategoriesFromData = (data:any) => {
   let temp:any = {};
   for(let i = 0; i < data.length ; i++ ){
@@ -23,7 +24,7 @@ const getCategoriesFromData = (data:any) => {
   categories.unshift("All");
   return categories;
 };
-
+                     {/* Coffe List Function */}
 const getCoffeList = (category :string , data :any) =>{
   if (category == 'All'){
     return data;
