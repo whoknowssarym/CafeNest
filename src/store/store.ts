@@ -88,7 +88,7 @@ export const useStore = create(
     }
    } )),
    deleteFromFavouriteList : (type : string , id : string ) => set(produce(state => {
-    if (type == "Coffe" ){
+    if (type == "Coffee" ){
         for(let i = 0 ; i<state.CoffeeList.length;i++){
             if(state.CoffeeList[i].id == id){
                 if(state.CoffeeList[i].favourite == true){
