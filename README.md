@@ -132,3 +132,9 @@ We welcome contributions! Here's how you can help:
 ## 📄 License
 
 CafeNest is Not available under any (LICENSE).
+
+## Update .
+CafeNest Is Currently UnderDevelopment Once It is Completed You will be able to See the Complete Version.
+
+## Notice !!! 
+If You Like My Project PLease Follow Me On Github Thank You.
