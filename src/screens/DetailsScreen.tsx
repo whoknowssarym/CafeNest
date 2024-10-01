@@ -8,7 +8,7 @@ const DetailsScreen = ({navigation,route} : any ) => {
   const ItemOfIndex =  useStore((state : any ) => 
     route.params.type =='Coffee' ? state.CoffeeList : state.BeanList, 
   )[route.params.index];
-  console.log(ItemOfIndex);
+  
 
   
   return (
