@@ -8,8 +8,24 @@ const DetailsScreen = ({navigation,route} : any ) => {
   const ItemOfIndex =  useStore((state : any ) => 
     route.params.type =='Coffee' ? state.CoffeeList : state.BeanList, 
   )[route.params.index];
+
+  const addToFavouriteList = useStore((state : any) => 
+    state.addToFavouriteList)
+
+  const deleteFromFavouriteList = useStore((state : any) =>
+    state.deleteFromFavouriteList)
+
+  const ToggleFavourite = (favourite :boolean,
+    type : string ,
+    id : string
+   ) =>{ favourite ? deleteFromFavouriteList(type,id) : addToFavouriteList(type,id)
+  };
   
 
+ const BackHandler = () =>{
+  navigation.pop();
+ };
+ 
   
   return (
     <View style = {styles.ScreenContainer}>
@@ -29,8 +45,8 @@ const DetailsScreen = ({navigation,route} : any ) => {
         average_rating = {ItemOfIndex.average_rating}
         rating_count = {ItemOfIndex.rating_count}
         roasted = {ItemOfIndex.roasted}
-        BackHandler = {() => {}}
-        ToggleFavourite = {() => {}}/>
+        BackHandler = {BackHandler}
+        ToggleFavourite = {ToggleFavourite}/>
       </ScrollView>
     </View>
   )
