@@ -35,6 +35,7 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({EnableBackHand
     BackHandler ,
     ToggleFavourite,}) => {
   return (
+                                                /* Upper Container Which contains Like Button and Back Button */
     <View>
         <ImageBackground source={imageLink_portrait}
         style={styles.ItemBackGroundImage}>
@@ -66,7 +67,7 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({EnableBackHand
                 </TouchableOpacity>
             </View>
          )}
-
+                                                                 {/* Second Half Which Will COontain Details OF Selected Item */}
          <View style = {styles.ImageInfoOuterContainer}>
                 <View style = {styles.ImageInfoInnerContainer}>
                     <View style = {styles.InfoContainerRow}>
