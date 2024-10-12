@@ -54,9 +54,9 @@ export const useStore = create(
         let totalprice = 0 ;
         for (let i = 0; i < state.CartList.length;i++){
             let tempPrice = 0;
-            for(let j = 0 ; j <state.CartList[i].prices.length;j++){
-                tempPrice = tempPrice + parseFloat(state.CartList[i].prices[j].price)
-                * state.CartList[i].prices[j].quantity;
+            for(let j = 0 ; j <state.CartList[i].price.length;j++){
+                tempPrice = tempPrice + parseFloat(state.CartList[i].price[j].price)
+                * state.CartList[i].price[j].quantity;
             }
             state.CartList[i].ItemPrice = tempPrice.toFixed(2).toString();
             totalprice = totalprice + tempPrice;

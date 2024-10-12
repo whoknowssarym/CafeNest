@@ -1,8 +1,9 @@
 import { ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 import React, { useState } from 'react'
-import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme'
+import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme'
 import { useStore } from '../store/store'
 import ImageBackgroundInfo from '../components/ImageBackgroundInfo'
+import PaymentFooter from '../components/PaymentFooter'
 
 const DetailsScreen = ({navigation,route} : any ) => {
   const ItemOfIndex =  useStore((state : any ) => 
@@ -24,12 +25,33 @@ const DetailsScreen = ({navigation,route} : any ) => {
   const [price , setprice] = useState(ItemOfIndex.prices[0]);
 
   const [fullDesc,setFullDesc] = useState(false)
+
+
+  const addToCart = useStore((state : any) => state.addToCart)
+
+
+  const calculateCartPrice = useStore((state : any) => 
+    state.calculateCartPrice);
   
 
  const BackHandler = () =>{
   navigation.pop();
  };
  
+ const addToCartHandler = ({id , index , name ,roasted , imagelinksquare , special_Ingredient , type , prices} : any ) => {
+  addToCart({id,
+    index,
+    name,
+    roasted,
+    imagelinksquare,
+    special_Ingredient,
+    type,
+    price:[{...prices,quantity:1}]
+  });
+  calculateCartPrice();
+  navigation.navigate('Cart');
+ }
+
   
   return (
     <View style = {styles.ScreenContainer}>
@@ -53,8 +75,8 @@ const DetailsScreen = ({navigation,route} : any ) => {
         ToggleFavourite = {ToggleFavourite}
       />
       <View style={styles.footerInfoArea}>
-        <Text style={styles.InfoTitle}>Description</Text>
-        {fullDesc ? (
+         <Text style={styles.InfoTitle}>Description</Text>
+         {fullDesc ? (
           <TouchableWithoutFeedback onPress={() => {setFullDesc(prev => !prev)}} >
             <Text style={styles.descriptionText}>{ItemOfIndex.description}</Text>
           </TouchableWithoutFeedback>
@@ -68,7 +90,21 @@ const DetailsScreen = ({navigation,route} : any ) => {
          <Text style={styles.InfoTitle}>Size</Text>
          <View style={styles.SizeOuterContainer}>
           {ItemOfIndex.prices.map((data : any ) => (
-            <TouchableOpacity  key={data.size} style={styles.sizeBox}>
+            <TouchableOpacity  
+              key={data.size}
+              onPress={() => {
+                setprice(data)
+              }}
+
+              style={[
+                styles.sizeBox,
+                {
+                  borderColor:
+                    data.size == price.size 
+                      ? COLORS.primaryOrangeHex
+                      : COLORS.primaryDarkGreyHex,
+            },
+            ]}>
               <Text 
                 style={[
                   styles.sizeText,
@@ -76,12 +112,32 @@ const DetailsScreen = ({navigation,route} : any ) => {
                     fontSize:
                      ItemOfIndex.type=="bean" 
                      ? FONTSIZE.size_20 
-                     : FONTSIZE.size_16,},]}>{data.size}</Text>
+                     : FONTSIZE.size_16,
+                   color:
+                     data.size == price.size 
+                      ? COLORS.primaryOrangeHex
+                      : COLORS.primaryLightGreyHex,
+                  },
+                ]}>
+                {data.size}
+              </Text>
             </TouchableOpacity>
           ) )}
          </View>
       </View>
-      
+          <PaymentFooter price={price} buttonTitle='Add to Cart' buttonPressHandler={() =>{
+            addToCartHandler({
+              id:ItemOfIndex.id,
+              index:ItemOfIndex.index,
+              name:ItemOfIndex.name,
+              roasted:ItemOfIndex.roasted,
+              imagelink_square:ItemOfIndex.imagelink_square,
+              special_Ingredient:ItemOfIndex.special_Ingredient,
+              type:ItemOfIndex.type,
+              prices:price,
+            })
+
+          }} />
       </ScrollView>
     </View>
   )
@@ -96,6 +152,7 @@ const styles = StyleSheet.create({
   },
   ScrollViewFlex:{
     flexGrow:1,
+    justifyContent:'space-between',
   },
   footerInfoArea:{
     padding:SPACING.space_20,
@@ -115,12 +172,24 @@ const styles = StyleSheet.create({
     marginBottom:SPACING.space_30,
   },
   SizeOuterContainer:{
-
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    gap:SPACING.space_20,
   },
   sizeText:{
+    fontFamily:FONTFAMILY.poppins_medium,
+
 
   },
   sizeBox:{
+    flex:1,
+    backgroundColor:COLORS.primaryDarkGreyHex,
+    alignItems:'center',
+    justifyContent:'center',
+    height:SPACING.space_24 * 2,
+    borderRadius:BORDERRADIUS.radius_10,
+    borderWidth: 2,
 
   },
 })
